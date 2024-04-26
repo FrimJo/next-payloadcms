@@ -10,11 +10,11 @@ export default async function Home() {
     collection: 'users',
   })
 
-  const users = data.docs
-
+  const [firstUser] = data.docs
   return (
     <main>
-      <pre>{JSON.stringify(users, null, 2)}</pre>
+      {firstUser?.firstName}
+      <pre>{JSON.stringify(firstUser, null, 2)}</pre>
     </main>
   );
 }
