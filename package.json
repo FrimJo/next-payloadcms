@@ -14,11 +14,11 @@
     "payload": "dotenv -e .env.local -- payload"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "^3.0.0-beta.15",
-    "@payloadcms/next": "^3.0.0-beta.15",
-    "@payloadcms/richtext-lexical": "^3.0.0-beta.15",
+    "@payloadcms/db-postgres": "^3.0.0-beta.18",
+    "@payloadcms/next": "^3.0.0-beta.18",
+    "@payloadcms/richtext-lexical": "^3.0.0-beta.18",
     "next": "^14.3.0-canary.7",
-    "payload": "^3.0.0-beta.15",
+    "payload": "^3.0.0-beta.18",
     "react": "^18",
     "react-dom": "^18"
   },
