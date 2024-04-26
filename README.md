@@ -12,3 +12,8 @@ DATABASE_URI=postgres://postgres:postgres@127.0.0.1:5432/postgres
 
 ## Start dev
 `npm run dev`
+
+## Apply migrations
+```bash
+npm run payload migrate
+```
