@@ -5,7 +5,8 @@ docker run -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres 
 ```
 
 ## Create `.env.local`
-DATABASE_URI=postgres://postgres:postgres@127.0.0.1:5432/postgres
+Add `DATABASE_URI` to a `.env.local` file next to `.env`.
+`DATABASE_URI=postgres://postgres:postgres@127.0.0.1:5432/postgres`
 
 ## Start dev
 `npm run dev`
