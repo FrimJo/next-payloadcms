@@ -6,7 +6,7 @@ docker run -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres 
 
 ## Create `.env.local`
 Add `DATABASE_URI` to a `.env.local` file next to `.env`.
-```bash
+```console
 DATABASE_URI=postgres://postgres:postgres@127.0.0.1:5432/postgres
 ```
 
@@ -14,6 +14,6 @@ DATABASE_URI=postgres://postgres:postgres@127.0.0.1:5432/postgres
 `npm run dev`
 
 ## Apply migrations
-```bash
+```console
 npm run payload migrate
 ```
