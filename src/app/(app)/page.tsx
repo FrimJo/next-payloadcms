@@ -7,14 +7,14 @@ export default async function Home() {
   })
 
   const data = await payload.find({
-    collection: 'users',
+      collection: 'users',
   })
 
   const [firstUser] = data.docs
   return (
-    <main>
-      {firstUser?.firstName}
-      <pre>{JSON.stringify(firstUser, null, 2)}</pre>
+    <main className="mx-auto container">
+      <div>First name: {firstUser?.firstName}</div>
+      <div>Email: {firstUser?.email}</div>
     </main>
-  );
+  )
 }

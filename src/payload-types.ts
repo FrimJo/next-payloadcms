@@ -9,6 +9,7 @@
 export interface Config {
   collections: {
     users: User;
+    events: Event;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -24,7 +25,7 @@ export interface Config {
  */
 export interface User {
   id: number;
-  firstName?: string | null;
+  firstName: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -35,6 +36,17 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  title: string;
+  startDate: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -5,6 +5,7 @@ await payload.db.drizzle.execute(sql`
 
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" serial PRIMARY KEY NOT NULL,
+	"first_name" varchar NOT NULL,
 	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
 	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
 	"email" varchar NOT NULL,
@@ -14,6 +15,15 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"hash" varchar,
 	"login_attempts" numeric,
 	"lock_until" timestamp(3) with time zone
+);
+
+CREATE TABLE IF NOT EXISTS "events" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"title" varchar NOT NULL,
+	"slug" varchar NOT NULL,
+	"start_date" timestamp(3) with time zone NOT NULL,
+	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS "payload_preferences" (
@@ -42,6 +52,7 @@ CREATE TABLE IF NOT EXISTS "payload_migrations" (
 
 CREATE INDEX IF NOT EXISTS "users_created_at_idx" ON "users" ("created_at");
 CREATE UNIQUE INDEX IF NOT EXISTS "users_email_idx" ON "users" ("email");
+CREATE INDEX IF NOT EXISTS "events_created_at_idx" ON "events" ("created_at");
 CREATE INDEX IF NOT EXISTS "payload_preferences_key_idx" ON "payload_preferences" ("key");
 CREATE INDEX IF NOT EXISTS "payload_preferences_created_at_idx" ON "payload_preferences" ("created_at");
 CREATE INDEX IF NOT EXISTS "payload_preferences_rels_order_idx" ON "payload_preferences_rels" ("order");
@@ -67,6 +78,7 @@ export async function down({ payload }: MigrateDownArgs): Promise<void> {
 await payload.db.drizzle.execute(sql`
 
 DROP TABLE "users";
+DROP TABLE "events";
 DROP TABLE "payload_preferences";
 DROP TABLE "payload_preferences_rels";
 DROP TABLE "payload_migrations";`);
