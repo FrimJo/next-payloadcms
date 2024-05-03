@@ -1,9 +1,10 @@
 import configPromise from '@payload-config'
 import { getPayload } from "payload"
-import { EventsPageClientProps } from './page.client'
+import { EventsPageClient } from './page.client'
 
-type EventPageProps = {params: {id: string}}
-export default async function EventPage(props: EventPageProps){
+type EventPageProps =  { params: { id: string } }
+
+export default async function EventPage(props: EventPageProps) {
   const payload = await getPayload({
     config: configPromise,
   })
@@ -11,9 +12,10 @@ export default async function EventPage(props: EventPageProps){
   const event = await payload.findByID({
       collection: 'events',
       id: props.params.id,
+      draft: false
   })
 
-  return <EventsPageClientProps event={event}/>
+  return <EventsPageClient event={event}/>
 }
 
 export async function generateStaticParams() {
@@ -23,6 +25,7 @@ export async function generateStaticParams() {
 
   const data = await payload.find({
       collection: 'events',
+      draft: false
   })
 
   return data.docs.map((event) => ({
