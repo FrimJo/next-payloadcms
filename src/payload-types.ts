@@ -26,6 +26,7 @@ export interface Config {
 export interface User {
   id: number;
   firstName: string;
+  role: 'admin' | 'user';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -45,6 +46,7 @@ export interface Event {
   id: number;
   title: string;
   startDate: string;
+  createdBy?: (number | null) | User;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
